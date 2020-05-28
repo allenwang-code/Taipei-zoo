@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -57,6 +58,20 @@ class MainFragment: Fragment(), MainScreenContract.StoryView {
         park_recycler_view.layoutManager = LinearLayoutManager(context)
         adapter = MainScreenAdapter(arrayListOf(), context!!)
         park_recycler_view.adapter = adapter
+
+        park_recycler_view.addOnItemTouchListener(object  : RecyclerItemClickListener(context!!, park_recycler_view,object :
+            OnItemClickListener{
+            override fun onItemClick(view: View, position: Int) {
+                val park = adapter.getItem(position)
+                var bundle = Bundle()
+                bundle.putParcelable("park", park)
+                findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, bundle)
+            }
+
+            override fun onLongItemClick(view: View?, position: Int) {
+
+            }
+        }){})
 
     }
 

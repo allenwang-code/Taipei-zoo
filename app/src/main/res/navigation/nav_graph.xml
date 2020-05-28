@@ -14,11 +14,14 @@
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+        <argument
+            android:name="park"
+            app:argType="com.allenwang.zoo.pojo.Park" />
     </fragment>
 
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.allenwang.zoo.SecondFragment"
+        android:name="com.allenwang.zoo.ParkDetailFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
 

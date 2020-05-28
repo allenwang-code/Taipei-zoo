@@ -1,6 +1,7 @@
 package com.allenwang.zoo.main
 
 import android.content.Context
+import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +20,8 @@ class MainScreenAdapter (var parks: List<Park>, private val context: Context) : 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.main_screen_item, parent, false))
+        val view = LayoutInflater.from(context).inflate(R.layout.main_screen_item, parent, false)
+        return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -29,6 +31,10 @@ class MainScreenAdapter (var parks: List<Park>, private val context: Context) : 
         Picasso.with(context)
             .load(park.ePicURL)
             .into(holder.photoImageView)
+    }
+
+    fun getItem(position: Int): Park {
+        return parks[position]
     }
 }
 

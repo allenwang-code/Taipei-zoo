@@ -1,5 +1,9 @@
 package com.allenwang.zoo.pojo
+
+import android.os.Parcel
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class ParkBase(
     @SerializedName("result")
@@ -38,4 +42,43 @@ data class Park(
     val eURL: String,
     @SerializedName("_id")
     val id: Int
-)
+) : Parcelable {
+    constructor(parcel: Parcel) : this (
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readInt()
+    ) {
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(eCategory)
+        parcel.writeString(eGeo)
+        parcel.writeString(eInfo)
+        parcel.writeString(eMemo)
+        parcel.writeString(eName)
+        parcel.writeString(eNo)
+        parcel.writeString(ePicURL)
+        parcel.writeString(eURL)
+        parcel.writeInt(id)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<Park> {
+        override fun createFromParcel(parcel: Parcel): Park {
+            return Park(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Park?> {
+            return arrayOfNulls(size)
+        }
+    }
+}
