@@ -23,26 +23,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/horizontal_recyclerView"
-                android:layout_width="0dp"
-                android:layout_height="120dp"
-                android:background="#464646"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <ImageView
                 android:id="@+id/imageView_photo"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
-                android:layout_marginTop="15dp"
+                android:layout_height="240dp"
                 android:src="@android:drawable/ic_menu_mapmode"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/horizontal_recyclerView" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView_description"
