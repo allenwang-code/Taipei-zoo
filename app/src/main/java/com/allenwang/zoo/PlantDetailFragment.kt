@@ -5,6 +5,7 @@ import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -38,7 +39,7 @@ class PlantDetailFragment : Fragment() {
             plant = bundle.getParcelable<Plant>("plant") as Plant
         }
 
-        textView_description.text = plant.fSummary
+        textView_description.text = plant.fBrief
         Picasso.with(context).load(plant.fPic01URL).into(imageView_photo)
     }
 }
