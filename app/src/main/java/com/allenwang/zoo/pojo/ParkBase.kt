@@ -41,7 +41,9 @@ data class Park(
     @SerializedName("E_URL")
     val eURL: String,
     @SerializedName("_id")
-    val id: Int
+    val id: Int,
+
+    var plants: List<Plant>
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString() ?: "",
@@ -52,9 +54,9 @@ data class Park(
         parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readString() ?: "",
-        parcel.readInt()
-    ) {
-    }
+        parcel.readInt(),
+        mutableListOf<Plant>().apply { parcel.readTypedList(this, Plant.CREATOR)}
+    ) {}
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(eCategory)
@@ -66,6 +68,7 @@ data class Park(
         parcel.writeString(ePicURL)
         parcel.writeString(eURL)
         parcel.writeInt(id)
+        parcel.writeTypedList(plants)
     }
 
     override fun describeContents(): Int {

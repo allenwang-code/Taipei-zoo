@@ -1,6 +1,7 @@
 package com.allenwang.zoo.main
 
 import com.allenwang.zoo.pojo.Park
+import com.allenwang.zoo.pojo.Plant
 
 interface MainScreenContract {
 

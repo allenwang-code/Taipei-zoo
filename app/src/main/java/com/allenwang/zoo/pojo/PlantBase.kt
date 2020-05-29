@@ -1,5 +1,7 @@
 package com.allenwang.zoo.pojo
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
 data class PlantBase(
@@ -93,4 +95,97 @@ data class Plant(
     val fVoice03URL: String,
     @SerializedName("_id")
     val id: Int
-)
+) : Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readString() ?: "",
+        parcel.readInt()
+    ) {
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(fAlsoKnown)
+        parcel.writeString(fBrief)
+        parcel.writeString(fCID)
+        parcel.writeString(fCode)
+        parcel.writeString(fFamily)
+        parcel.writeString(fFeature)
+        parcel.writeString(fFunctionAndApplication)
+        parcel.writeString(fGenus)
+        parcel.writeString(fGeo)
+        parcel.writeString(fKeywords)
+        parcel.writeString(F_Location)
+        parcel.writeString(fNameCh)
+        parcel.writeString(fNameEn)
+        parcel.writeString(fNameLatin)
+        parcel.writeString(fPdf01ALT)
+        parcel.writeString(fPdf01URL)
+        parcel.writeString(fPdf02ALT)
+        parcel.writeString(fPdf02URL)
+        parcel.writeString(fPic01ALT)
+        parcel.writeString(fPic01URL)
+        parcel.writeString(fPic02ALT)
+        parcel.writeString(fPic02URL)
+        parcel.writeString(fPic03ALT)
+        parcel.writeString(fPic03URL)
+        parcel.writeString(fPic04ALT)
+        parcel.writeString(fPic04URL)
+        parcel.writeString(fSummary)
+        parcel.writeString(fUpdate)
+        parcel.writeString(fVedioURL)
+        parcel.writeString(fVoice01ALT)
+        parcel.writeString(fVoice01URL)
+        parcel.writeString(fVoice02ALT)
+        parcel.writeString(fVoice02URL)
+        parcel.writeString(fVoice03ALT)
+        parcel.writeString(fVoice03URL)
+        parcel.writeInt(id)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<Plant> {
+        override fun createFromParcel(parcel: Parcel): Plant {
+            return Plant(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Plant?> {
+            return arrayOfNulls(size)
+        }
+    }
+}
