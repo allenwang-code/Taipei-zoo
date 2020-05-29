@@ -1,7 +1,6 @@
 package com.allenwang.zoo.main
 
 import android.content.Context
-import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +12,8 @@ import com.allenwang.zoo.pojo.Park
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.main_screen_item.view.*
 
-class MainScreenAdapter (var parks: List<Park>, private val context: Context) : RecyclerView.Adapter<ViewHolder>() {
+class MainScreenAdapter(var parks: List<Park>, private val context: Context) :
+    RecyclerView.Adapter<ViewHolder>() {
 
     override fun getItemCount(): Int {
         return parks.size
@@ -38,7 +38,7 @@ class MainScreenAdapter (var parks: List<Park>, private val context: Context) : 
     }
 }
 
-class ViewHolder (view: View) : RecyclerView.ViewHolder(view) {
+class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val titleTextView: TextView = view.textView_title
     val descriptionTextView: TextView = view.textView_description
     val photoImageView: ImageView = view.imageView_photo

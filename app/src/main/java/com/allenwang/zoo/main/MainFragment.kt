@@ -16,7 +16,7 @@ import com.allenwang.zoo.pojo.Park
 import kotlinx.android.synthetic.main.fragment_first.*
 
 
-class MainFragment: Fragment(), MainScreenContract.StoryView {
+class MainFragment : Fragment(), MainScreenContract.StoryView {
     private val presenter = MainScreenPresenter()
     private lateinit var adapter: MainScreenAdapter
 
@@ -47,7 +47,7 @@ class MainFragment: Fragment(), MainScreenContract.StoryView {
     }
 
     override fun showProgressBar(visible: Boolean) {
-        progressBar.visibility = if(visible) View.VISIBLE else View.GONE
+        progressBar.visibility = if (visible) View.VISIBLE else View.GONE
     }
 
     override fun showError(msg: String) {
@@ -59,19 +59,23 @@ class MainFragment: Fragment(), MainScreenContract.StoryView {
         adapter = MainScreenAdapter(arrayListOf(), context!!)
         park_recycler_view.adapter = adapter
 
-        park_recycler_view.addOnItemTouchListener(object  : RecyclerItemClickListener(context!!, park_recycler_view,object :
-            OnItemClickListener{
-            override fun onItemClick(view: View, position: Int) {
-                val park = adapter.getItem(position)
-                var bundle = Bundle()
-                bundle.putParcelable("park", park)
-                findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, bundle)
-            }
+        park_recycler_view.addOnItemTouchListener(object :
+            RecyclerItemClickListener(context!!, park_recycler_view, object :
+                OnItemClickListener {
+                override fun onItemClick(view: View, position: Int) {
+                    val park = adapter.getItem(position)
+                    val bundle = Bundle()
+                    bundle.putParcelable("park", park)
+                    findNavController().navigate(
+                        R.id.action_FirstFragment_to_SecondFragment,
+                        bundle
+                    )
+                }
 
-            override fun onLongItemClick(view: View?, position: Int) {
+                override fun onLongItemClick(view: View?, position: Int) {
 
-            }
-        }){})
+                }
+            }) {})
 
     }
 

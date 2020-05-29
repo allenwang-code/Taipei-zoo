@@ -29,10 +29,6 @@ class MainScreenPresenter {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                     { parkBase ->
-//                        if (stories.p.isEmpty()) {
-//                            view.showError("Error")
-//                            return@subscribe
-//                        }
                         view.showParks(parkBase.result.results)
                     },
                     { error ->

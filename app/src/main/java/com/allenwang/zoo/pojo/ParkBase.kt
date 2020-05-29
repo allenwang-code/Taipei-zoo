@@ -43,7 +43,7 @@ data class Park(
     @SerializedName("_id")
     val id: Int
 ) : Parcelable {
-    constructor(parcel: Parcel) : this (
+    constructor(parcel: Parcel) : this(
         parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readString() ?: "",

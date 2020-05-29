@@ -20,21 +20,18 @@ class ParkDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_second, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       // findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         val bundle = this.arguments
         if (bundle != null) {
-            park  = bundle.getParcelable<Park>("park") as Park
+            park = bundle.getParcelable<Park>("park") as Park
         }
 
         textView_description.text = park.eInfo
         Picasso.with(context).load(park.ePicURL).into(imageView_photo)
-
     }
 }
